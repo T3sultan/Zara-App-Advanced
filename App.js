@@ -1,4 +1,5 @@
 import * as React from "react";
+// import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import {
   Image,
   FlatList,
@@ -35,6 +36,7 @@ const product = {
 
 export default function App() {
   const scrollY = React.useRef(new Animated.Value(0)).current;
+  const sheetRef = React.useRef(null);
   return (
     <View style={styles.container}>
       <StatusBar hidden />
@@ -82,6 +84,11 @@ export default function App() {
           />
         </View>
       </View>
+      {/* <BottomSheet ref={sheetRef} snapPoints={[450, 300, 1]} borderRadius={10}>
+        <BottomSheetScrollView>
+          <Text>sdfsdfs</Text>
+        </BottomSheetScrollView>
+      </BottomSheet> */}
     </View>
   );
 }
