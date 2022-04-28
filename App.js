@@ -6,6 +6,7 @@ import {
   StatusBar,
   Dimensions,
   StyleSheet,
+  Text,
 } from "react-native";
 const { width, height } = Dimensions.get("screen");
 
@@ -27,21 +28,44 @@ const product = {
     'Height x Length x Width: 14 x 21.5 x 4.5 cm. / 5.5 x 8.4 x 1.7"',
   ],
 };
+const renderNewPlants = (item, index) => {
+  return (
+    <View style={{ width, height }}>
+      <Image
+        source={{ uri: item }}
+        style={{
+          height: ITEM_HEIGHT,
+          width: ITEM_WIDTH,
+          resizeMode: "cover",
+        }}
+      />
+    </View>
+  );
+};
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <StatusBar hidden />
+      <FlatList
+        data={images}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({ item, index }) => renderNewPlants(item, index)}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  // container: {
+  //   flex: 1,
+  //   backgroundColor: "#fff",
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
+  image: {
+    width: ITEM_WIDTH,
+    height: ITEM_HEIGHT,
+    resizeMode: "cover",
   },
 });
